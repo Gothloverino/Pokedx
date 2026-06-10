@@ -30,6 +30,7 @@ function escapeHtml(value) {
 function createCard(item) {
   const image = item.image ? `<img src="${escapeHtml(item.image)}" class="card-img-top" alt="${escapeHtml(item.title)}">` : "";
   const meta = item.meta ? `<span class="badge text-bg-primary">${escapeHtml(item.meta)}</span>` : "";
+  if(item.title!='vaporeon'){
   return `
     <div class="col-md-4">
       <article class="card h-100 shadow-sm">
@@ -41,7 +42,21 @@ function createCard(item) {
         </div>
       </article>
     </div>
+  `;}
+  else{
+    return `
+    <div class="col-md-4">
+      <article class="card h-100 shadow-sm">
+        ${image}
+        <div class="card-body" id ="Pokeapi-card">
+          <a href="https://www.reddit.com/r/copypasta/comments/eidplc/vaporeon_copypasta/?tl=it" class="stretched-link"><h3 class="card-title h5">${escapeHtml(item.title)}</h3></a>
+          <p class="card-text">${escapeHtml(item.body)}</p>
+          ${meta}
+        </div>
+      </article>
+    </div>
   `;
+  }
 }
 
 function render(items) {
